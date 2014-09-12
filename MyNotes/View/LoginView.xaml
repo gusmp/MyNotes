@@ -1,0 +1,44 @@
+﻿<local:BaseView
+    x:Class="MyNotes.View.LoginView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:MyNotes.View"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True"
+    DataContext="{Binding Login, Source={StaticResource Locator}}"
+>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28" Orientation="Horizontal">
+            <Image Source="/Assets/Tiles/MyNotesTileSmall.png" Width="50" Height="50" />
+            <TextBlock Text="Mis Notas" Style="{StaticResource PhoneTextTitle1Style}" HorizontalAlignment="Right"/>
+
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel>
+                <TextBlock Text="Password:" Margin="10"  />
+                <PasswordBox x:Name="PasswordTb" Password="{Binding Login.Password,Mode=TwoWay}" MaxLength="20" />
+
+                <Button x:Name="LogInBt" Content="Acceder" Command="{Binding ValidateLoginCommand}" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</local:BaseView>
